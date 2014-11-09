@@ -2,6 +2,10 @@ package com.example.pathfinder.route;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.UUID;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.util.Log;
 
@@ -15,8 +19,16 @@ public class Route {
 	public final int W = 6;
 	public final int NW = 7;
 	
+	private static final String JSON_NAME = "name";
+	private static final String JSON_ID = "id";
+	private static final String JSON_CREATOR = "creator";
+	private static final String JSON_DATE = "date";
+	private static final String JSON_STEPS = "steps";
+	private static final String JSON_ROUTE = "route";
+	
 	private String logTitle = "Route class";
 	private String name;
+	private UUID mId;
 	private String creator;
 	private String date;
 	private int totalSteps;
@@ -29,8 +41,33 @@ public class Route {
 		Calendar today = Calendar.getInstance();
 		date = today.get(Calendar.MONTH) + "/" + today.get(Calendar.DAY_OF_MONTH) + "/" + today.get(Calendar.YEAR);
 		totalSteps = 0;
+		mId = UUID.randomUUID();
 	}
 	
+	@SuppressWarnings("unchecked")
+	public Route(JSONObject json) throws JSONException {
+		 name = json.getString(JSON_NAME);
+		 mId = (UUID) json.get(JSON_ID);
+		 creator = json.getString(JSON_CREATOR);
+		 totalSteps = json.getInt(JSON_STEPS);
+		 route = (ArrayList<StepDirection>) json.get(JSON_ROUTE);
+		 date = json.getString(JSON_DATE);
+		 finalized = true;
+	}
+
+	public JSONObject toJSON() throws JSONException {
+		JSONObject json = new JSONObject();
+		json.put(JSON_NAME, name);
+		json.put(JSON_CREATOR, creator);
+		json.put(JSON_ID, mId);
+		json.put(JSON_DATE, date);
+		json.put(JSON_ROUTE, route);
+		json.put(JSON_STEPS, totalSteps);
+		return json;
+	}
+	public UUID getId() {
+        return mId;
+    }
 	public void finalize() {
 		finalized = true;
 	}
