@@ -6,7 +6,7 @@
     android:gravity="center" >
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/generate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/main_screen_button_one"
@@ -15,7 +15,7 @@
         android:layout_margin="5dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/saved"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/main_screen_button_two"
