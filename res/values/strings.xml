@@ -12,7 +12,8 @@
     <string name="map_name_input">ie. Route to my house</string>
     <string name="start_input">ie. Pallet Town entrance</string>
     <string name="end_input">ie. Professor Oak\'s house</string>
-    <string name="step">steps taken in direction: </string>
+    <string name="steps">steps taken in direction: </string>
+    <string name="step">Step</string>
     <string name="total">Total Steps: </string>
     <string name="confirm">Complete</string>
     <string name="route">Routes</string>

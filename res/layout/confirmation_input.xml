@@ -39,11 +39,27 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/complete_button"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="1"
-        android:text="@string/confirm" />
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/complete_button"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="@string/confirm"
+            android:textSize="25dp" />
+
+        <Button
+            android:id="@+id/step_button"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="@string/step"
+            android:textSize="25dp" />
+        
+    </LinearLayout>
 
 </LinearLayout>

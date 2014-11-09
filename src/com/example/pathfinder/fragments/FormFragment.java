@@ -18,7 +18,8 @@ import com.example.pathfinder.R;
 public class FormFragment extends Fragment {
 	
 	private Button mNext;
-	private ImageButton mLocation;
+	private ImageButton mStartPic;
+	private ImageButton mEndPic;
 	private EditText mName;
 	private EditText mStartLocation;
 	private EditText mEndLocation;
@@ -49,8 +50,8 @@ public class FormFragment extends Fragment {
 			}
 		});
 		
-		mLocation = (ImageButton) v.findViewById(R.id.find_location_button);
-		mLocation.setOnClickListener(new View.OnClickListener() {
+		mStartPic= (ImageButton) v.findViewById(R.id.start_picture);
+		mStartPic.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -58,7 +59,15 @@ public class FormFragment extends Fragment {
 				
 			}
 		});
-		
+		mEndPic= (ImageButton) v.findViewById(R.id.end_picture);
+		mEndPic.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		mName = (EditText) v.findViewById(R.id.edit_name_text);
 		mName.addTextChangedListener(new TextWatcher() {
             @Override
