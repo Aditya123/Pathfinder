@@ -46,7 +46,7 @@ public class JSONSerializer {
     }
 
     public ArrayList<Route> loadRoutes() throws IOException, JSONException {
-        ArrayList<Route> crimes = new ArrayList<Route>();
+        ArrayList<Route> routes = new ArrayList<Route>();
         BufferedReader reader = null;
         try {
             // Open and read the file into a StringBuilder
@@ -61,9 +61,9 @@ public class JSONSerializer {
             // Parse the JSON using JSONTokener
             JSONArray array = (JSONArray) new JSONTokener(jsonString.toString())
                 .nextValue();
-            // Build the array of crimes from JSONObjects
+            // Build the array of routes from JSONObjects
             for (int i = 0; i < array.length(); i++) {
-                crimes.add(new Route(array.getJSONObject(i)));
+                routes.add(new Route(array.getJSONObject(i)));
             }
         } catch (FileNotFoundException e) {
             // Ignore this one; it happens when starting fresh
@@ -71,6 +71,6 @@ public class JSONSerializer {
             if (reader != null)
                 reader.close();
         }
-        return crimes;
+        return routes;
     }
 }

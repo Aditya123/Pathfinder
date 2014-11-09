@@ -36,7 +36,7 @@ public class Route {
 	private String end;
 	private String start;
 	private int totalSteps;
-	private ArrayList<StepDirection> route;
+	private ArrayList<StepDirection> route = new ArrayList<StepDirection>();
 	private Boolean finalized = false;
 	
 	public Route(String name, String creator, String start, String end) {
@@ -53,10 +53,10 @@ public class Route {
 	@SuppressWarnings("unchecked")
 	public Route(JSONObject json) throws JSONException {
 		 name = json.getString(JSON_NAME);
-		 mId = (UUID) json.get(JSON_ID);
+		 mId = UUID.fromString(json.getString(JSON_ID));
 		 creator = json.getString(JSON_CREATOR);
 		 totalSteps = json.getInt(JSON_STEPS);
-		 route = (ArrayList<StepDirection>) json.get(JSON_ROUTE);
+		 route = (ArrayList<StepDirection>) json.get(JSON_ROUTE);		 
 		 date = json.getString(JSON_DATE);
 		 start = json.getString(JSON_START);
 		 end = json.getString(JSON_END);
@@ -67,7 +67,7 @@ public class Route {
 		JSONObject json = new JSONObject();
 		json.put(JSON_NAME, name);
 		json.put(JSON_CREATOR, creator);
-		json.put(JSON_ID, mId);
+		json.put(JSON_ID, mId.toString());
 		json.put(JSON_DATE, date);
 		json.put(JSON_ROUTE, route);
 		json.put(JSON_STEPS, totalSteps);
@@ -123,7 +123,8 @@ public class Route {
 	
 	public void addDirection(int steps, int direction) {
 		if (!finalized) {
-			route.add(new StepDirection(steps, direction));
+			StepDirection test = new StepDirection(steps, direction);
+			route.add(test);
 			incrementSteps(steps);
 		}
 		Log.d(logTitle, "trying to add direction to finalized route");

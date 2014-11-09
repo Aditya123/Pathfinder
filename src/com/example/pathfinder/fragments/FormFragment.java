@@ -126,7 +126,7 @@ public class FormFragment extends Fragment {
 	}
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 	    if (resultCode != Activity.RESULT_OK) return;
-	    if (requestCode == Activity.RESULT_OK) {
+	    if (resultCode == Activity.RESULT_OK) {
 	        getActivity().finish();	        
 	    }
 	}

@@ -1,13 +1,30 @@
 package com.example.pathfinder.fragments;
 
-import android.support.v4.app.Fragment;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
 
-public class SplashScreenActivity extends SingleFragmentActivity {
+import com.example.pathfinder.R;
+
+public class SplashScreenActivity extends Activity {
+	private static final long SPLASH_DISPLAY_LENGTH = 3000;
 
 	@Override
-	protected Fragment createFragment() {
-		// TODO Auto-generated method stub
-		return new SplashScreenFragment();
-	}
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.splash_screen);
+        getActionBar().hide();
+        
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                /* Create an Intent that will start the Menu-Activity. */
+                Intent mainIntent = new Intent(SplashScreenActivity.this, MainScreenActivity.class);
+                SplashScreenActivity.this.startActivity(mainIntent);
+                SplashScreenActivity.this.finish();
+            }
+        }, SPLASH_DISPLAY_LENGTH);
+    }
 
 }

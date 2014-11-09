@@ -41,8 +41,8 @@ public class Compass extends Activity implements SensorEventListener{
 		super.onCreate(savedInstanceState);		
 		
 		mSensorMan = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-		mStepCounterSensor = mSensorMan.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-		mStepDetectorSensor = mSensorMan.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
+		//mStepCounterSensor = mSensorMan.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+		//mStepDetectorSensor = mSensorMan.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
 
         mAccelerometer = mSensorMan.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mMagnetoMeter = mSensorMan.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
@@ -86,6 +86,7 @@ public class Compass extends Activity implements SensorEventListener{
             if(azimuthInDegress >= 337.5 || azimuthInDegress < 22.5) {
                  //Assign north 0
                 txtView3.setText("0");
+                direction = 0;
             }
             else if (azimuthInDegress >=22.5 && azimuthInDegress < 67.5) {
                 //Assign northEast 1
@@ -128,7 +129,7 @@ public class Compass extends Activity implements SensorEventListener{
 
 
 
-	 }
+	}
 
     protected void setDirection(int i){direction = i;}
     protected int getDirection(){return direction;}

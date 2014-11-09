@@ -15,6 +15,7 @@ public class RouteList {
 	
 	private RouteList(Context appContext) {
 		mAppContext = appContext;
+		mSerializer = new JSONSerializer(mAppContext, FILENAME);
 		try {
             mRoutes = mSerializer.loadRoutes();
         } catch (Exception e) {
@@ -25,7 +26,7 @@ public class RouteList {
 	
 	public static RouteList get (Context c) {
 		if (sRouteList == null) {
-			sRouteList = new RouteList(c.getApplicationContext());
+			sRouteList = new RouteList(c);
 		}
 		return sRouteList;
 	}
