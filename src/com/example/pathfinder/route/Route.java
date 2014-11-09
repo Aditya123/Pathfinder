@@ -25,18 +25,24 @@ public class Route {
 	private static final String JSON_DATE = "date";
 	private static final String JSON_STEPS = "steps";
 	private static final String JSON_ROUTE = "route";
+	private static final String JSON_START = "start";
+	private static final String JSON_END = "end";
 	
 	private String logTitle = "Route class";
 	private String name;
 	private UUID mId;
 	private String creator;
 	private String date;
+	private String end;
+	private String start;
 	private int totalSteps;
 	private ArrayList<StepDirection> route;
 	private Boolean finalized = false;
 	
-	public Route(String name, String creator) {
+	public Route(String name, String creator, String start, String end) {
 		this.name = name;
+		this.start = start;
+		this.end = end;
 		this.creator = creator;
 		Calendar today = Calendar.getInstance();
 		date = today.get(Calendar.MONTH) + "/" + today.get(Calendar.DAY_OF_MONTH) + "/" + today.get(Calendar.YEAR);
@@ -52,6 +58,8 @@ public class Route {
 		 totalSteps = json.getInt(JSON_STEPS);
 		 route = (ArrayList<StepDirection>) json.get(JSON_ROUTE);
 		 date = json.getString(JSON_DATE);
+		 start = json.getString(JSON_START);
+		 end = json.getString(JSON_END);
 		 finalized = true;
 	}
 
@@ -63,8 +71,19 @@ public class Route {
 		json.put(JSON_DATE, date);
 		json.put(JSON_ROUTE, route);
 		json.put(JSON_STEPS, totalSteps);
+		json.put(JSON_START, start);
+		json.put(JSON_END, end);
 		return json;
 	}
+	
+	public String getStart() {
+		return start;
+	}
+	
+	public String getEnd() {
+		return end;
+	}
+	
 	public UUID getId() {
         return mId;
     }

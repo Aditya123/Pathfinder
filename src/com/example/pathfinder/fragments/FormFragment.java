@@ -1,6 +1,7 @@
 package com.example.pathfinder.fragments;
 
 import com.example.pathfinder.R;
+import com.example.pathfinder.route.Route;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,10 +21,13 @@ public class FormFragment extends Fragment {
 	private EditText mName;
 	private EditText mStartLocation;
 	private EditText mEndLocation;
+	private String name;
+	private String start;
+	private String end;
+	private Route routeInProgress;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
 	}
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -34,8 +38,8 @@ public class FormFragment extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
+				 routeInProgress = new Route(name, "Ash Ketchum", start, end);
+				 //We have to create intent to the next activity and pass in the route.
 			}
 		});
 		mLocation = (ImageButton) v.findViewById(R.id.find_location_button);
@@ -52,7 +56,7 @@ public class FormFragment extends Fragment {
 		mName.addTextChangedListener(new TextWatcher() {
             @Override
 			public void onTextChanged(CharSequence c, int start, int before, int count) {
-
+            	FormFragment.this.name = c.toString();
             }
 
             @Override
@@ -70,7 +74,7 @@ public class FormFragment extends Fragment {
 		mStartLocation.addTextChangedListener(new TextWatcher() {
             @Override
 			public void onTextChanged(CharSequence c, int start, int before, int count) {
-
+            	FormFragment.this.start = c.toString();
             }
 
             @Override
@@ -88,7 +92,7 @@ public class FormFragment extends Fragment {
 		mEndLocation.addTextChangedListener(new TextWatcher() {
             @Override
 			public void onTextChanged(CharSequence c, int start, int before, int count) {
-
+            	FormFragment.this.end = c.toString();
             }
 
             @Override

@@ -36,7 +36,12 @@
         <activity
             android:name="com.example.pathfinder.fragments.FormActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"> >
+            android:screenOrientation="portrait"> 
+        </activity>
+        <activity
+            android:name="com.example.pathfinder.fragments.PathListActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"> 
         </activity>
     </application>
 
