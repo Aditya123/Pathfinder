@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.UUID;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import android.util.Log;
 
@@ -56,7 +58,10 @@ public class Route {
 		 mId = UUID.fromString(json.getString(JSON_ID));
 		 creator = json.getString(JSON_CREATOR);
 		 totalSteps = json.getInt(JSON_STEPS);
-		 route = (ArrayList<StepDirection>) json.get(JSON_ROUTE);		 
+		 JSONArray temproute = new JSONArray(json.getString(JSON_ROUTE));	
+		 for (int i = 0; i < temproute.length(); i++) {
+             addDirection(temproute.getJSONObject(i).getInt(StepDirection.JSON_STEPS), temproute.getJSONObject(i).getInt(StepDirection.JSON_DIRECTION));
+         }
 		 date = json.getString(JSON_DATE);
 		 start = json.getString(JSON_START);
 		 end = json.getString(JSON_END);
@@ -69,6 +74,12 @@ public class Route {
 		json.put(JSON_CREATOR, creator);
 		json.put(JSON_ID, mId.toString());
 		json.put(JSON_DATE, date);
+		
+		JSONArray array = new JSONArray();
+        for (StepDirection c : route)
+            array.put(c.toJSON());
+        
+		json.put(JSON_ROUTE, array);
 		json.put(JSON_ROUTE, route);
 		json.put(JSON_STEPS, totalSteps);
 		json.put(JSON_START, start);
@@ -130,20 +141,20 @@ public class Route {
 		Log.d(logTitle, "trying to add direction to finalized route");
 	}
 	
-	public void test(ArrayList<Integer> directions) {
-		int lastDirection = 0;
-		int step = 0;
-		for(int i = 0; i < directions.size(); i++) {
-			if (directions.get(i) == lastDirection) {
-				step++;
-			} else {
-				if (step > 0) {
-					addDirection(step, lastDirection);
-					lastDirection = directions.get(i);
-					step = 1;
-				}
-			}
-		}
-		addDirection(step, lastDirection);
-	}
+//	public void test(ArrayList<Integer> directions) {
+//		int lastDirection = 0;
+//		int step = 0;
+//		for(int i = 0; i < directions.size(); i++) {
+//			if (directions.get(i) == lastDirection) {
+//				step++;
+//			} else {
+//				if (step > 0) {
+//					addDirection(step, lastDirection);
+//					lastDirection = directions.get(i);
+//					step = 1;
+//				}
+//			}
+//		}
+//		addDirection(step, lastDirection);
+//	}
 }
