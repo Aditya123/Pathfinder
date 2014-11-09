@@ -28,7 +28,7 @@ public final class R {
         public static final int splashscreen=0x7f020003;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000f;
+        public static final int action_settings=0x7f080010;
         public static final int add_checkpoint=0x7f080003;
         public static final int complete_button=0x7f080004;
         public static final int edit_end_text=0x7f080008;
@@ -36,12 +36,13 @@ public final class R {
         public static final int edit_start_text=0x7f080006;
         public static final int find_location_button=0x7f080007;
         public static final int fragmentContainer=0x7f080000;
-        public static final int generate=0x7f08000a;
+        public static final int generate=0x7f08000b;
+        public static final int imageView1=0x7f08000a;
         public static final int next_button=0x7f080009;
-        public static final int path_creator=0x7f08000e;
-        public static final int path_date=0x7f08000c;
-        public static final int path_name=0x7f08000d;
-        public static final int saved=0x7f08000b;
+        public static final int path_creator=0x7f08000f;
+        public static final int path_date=0x7f08000d;
+        public static final int path_name=0x7f08000e;
+        public static final int saved=0x7f08000c;
         public static final int step_direction=0x7f080001;
         public static final int total_steps=0x7f080002;
     }

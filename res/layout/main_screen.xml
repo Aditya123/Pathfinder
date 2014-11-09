@@ -3,11 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center" >
+    android:gravity="center" 
+    android:background="@drawable/background">
 
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="152dp"
+        android:layout_height="174dp"
+        android:src="@drawable/icon" />
+	
     <Button
         android:id="@+id/generate"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/main_screen_button_one"
         android:textSize="40dp"
@@ -16,7 +23,7 @@
 
     <Button
         android:id="@+id/saved"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/main_screen_button_two"
         android:textSize="40dp"
