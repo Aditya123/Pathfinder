@@ -128,4 +128,21 @@ public class Route {
 		}
 		Log.d(logTitle, "trying to add direction to finalized route");
 	}
+	
+	public void test(ArrayList<Integer> directions) {
+		int lastDirection = 0;
+		int step = 0;
+		for(int i = 0; i < directions.size(); i++) {
+			if (directions.get(i) == lastDirection) {
+				step++;
+			} else {
+				if (step > 0) {
+					addDirection(step, lastDirection);
+					lastDirection = directions.get(i);
+					step = 1;
+				}
+			}
+		}
+		addDirection(step, lastDirection);
+	}
 }

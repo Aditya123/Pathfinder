@@ -1,8 +1,7 @@
 package com.example.pathfinder.fragments;
 
-import com.example.pathfinder.R;
-import com.example.pathfinder.route.Route;
-
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -14,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.example.pathfinder.R;
+
 public class FormFragment extends Fragment {
 	
 	private Button mNext;
@@ -24,7 +25,9 @@ public class FormFragment extends Fragment {
 	private String name;
 	private String start;
 	private String end;
-	private Route routeInProgress;
+	public static final String NAME = "name";
+	public static final String START = "start";
+	public static final String END = "end";
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,10 +41,14 @@ public class FormFragment extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
-				 routeInProgress = new Route(name, "Ash Ketchum", start, end);
-				 //We have to create intent to the next activity and pass in the route.
+				 Intent i = new Intent(getActivity(), ConfirmationActivity.class);
+				 i.putExtra(NAME, name);
+				 i.putExtra(START, start);
+				 i.putExtra(END, end);
+				 startActivityForResult(i, 0);
 			}
 		});
+		
 		mLocation = (ImageButton) v.findViewById(R.id.find_location_button);
 		mLocation.setOnClickListener(new View.OnClickListener() {
 			
@@ -88,7 +95,7 @@ public class FormFragment extends Fragment {
                 // This one too
             }
         });
-		mEndLocation = (EditText) v.findViewById(R.id.edit_name_text);
+		mEndLocation = (EditText) v.findViewById(R.id.edit_end_text);
 		mEndLocation.addTextChangedListener(new TextWatcher() {
             @Override
 			public void onTextChanged(CharSequence c, int start, int before, int count) {
@@ -107,5 +114,11 @@ public class FormFragment extends Fragment {
             }
         });
 		return v;
+	}
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    if (resultCode != Activity.RESULT_OK) return;
+	    if (requestCode == Activity.RESULT_OK) {
+	        getActivity().finish();	        
+	    }
 	}
 }
