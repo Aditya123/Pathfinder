@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".SplashScreenActivity"
+            android:name="com.example.pathfinder.fragments.SplashScreenActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"> >
             <intent-filter>
@@ -24,17 +24,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ConfirmationActivity"
+			android:name="com.example.pathfinder.fragments.ConfirmationActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"> >
+            android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".MainScreenActivity"
+            android:name="com.example.pathfinder.fragments.MainScreenActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"> >
+            android:screenOrientation="portrait"> 
         </activity>
         <activity
-            android:name=".FormActivity"
+            android:name="com.example.pathfinder.fragments.FormActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"> >
         </activity>
